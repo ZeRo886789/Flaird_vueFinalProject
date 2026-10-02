@@ -1,0 +1,11 @@
+/* Dark theme tokens live in base/variables.css */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  scrollbar-gutter: stable;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme="dark"] {
+    --ease: 0.01ms;
+  }
+}

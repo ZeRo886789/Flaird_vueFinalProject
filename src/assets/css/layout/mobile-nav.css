@@ -1,0 +1,28 @@
+.mobile-nav {
+  display: none;
+  position: fixed;
+  z-index: 80;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.mobile-nav__links { display: grid; grid-template-columns: repeat(4, 1fr); }
+
+.mobile-nav__link {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  color: var(--muted);
+  font-size: .72rem;
+  border-radius: 14px;
+}
+
+.mobile-nav__link.router-link-active { color: var(--text); background: var(--surface-2); }

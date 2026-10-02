@@ -1,0 +1,38 @@
+.settings-sections { display: flex; flex-direction: column; gap: 28px; }
+
+.settings-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.settings-section h2 {
+  font-size: 1.15rem;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.setting-row:last-child { border-bottom: none; }
+
+.setting-info h3 { font-size: 0.95rem; margin-bottom: 2px; }
+.setting-info p { color: var(--muted); font-size: 0.85rem; }
+
+.setting-control { display: flex; align-items: center; }
+
+.danger-zone .setting-row { border-color: rgba(251,113,137,.3); }
+
+@media (max-width: 600px) {
+  .setting-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .setting-control { width: 100%; }
+}

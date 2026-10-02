@@ -1,0 +1,33 @@
+.search-page { margin-top: 8px; }
+.search-page__bar { max-width: 600px; margin-bottom: 24px; }
+
+.search-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+.search-tab {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all .2s var(--ease);
+}
+.search-tab:hover { background: var(--surface-2); }
+.search-tab.active {
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+  border-color: var(--primary);
+  color: var(--primary-2);
+}
+.search-tab__count { margin-left: 8px; color: var(--muted); font-size: 0.85rem; }
+
+.results-section-title {
+  margin: 16px 0 12px;
+  color: var(--muted-2);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.users-list { display: flex; flex-direction: column; gap: 12px; }
+
+@media (max-width: 600px) {
+  .search-tabs { flex-direction: column; }
+}

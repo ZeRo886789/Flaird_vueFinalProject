@@ -1,0 +1,34 @@
+.rating {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.rating--sm .rating__star { font-size: 1rem; }
+.rating--md .rating__star { font-size: 1.25rem; }
+.rating--lg .rating__star { font-size: 1.5rem; }
+
+.rating__star {
+  color: var(--muted-2);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color .18s var(--ease), transform .18s var(--ease);
+}
+
+.rating__star.is-filled {
+  color: var(--warning);
+  text-shadow: 0 0 8px rgba(251,191,36,.4);
+}
+
+.rating__star:hover,
+.rating__star:hover ~ .rating__star {
+  color: var(--warning);
+}
+
+.rating__star:hover {
+  transform: scale(1.15);
+}
+
+.rating__star[aria-checked="true"] {
+  color: var(--warning);
+}

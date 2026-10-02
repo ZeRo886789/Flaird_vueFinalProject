@@ -1,0 +1,40 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+.badge--sm { font-size: 0.62rem; padding: 2px 8px; }
+.badge--md { font-size: 0.72rem; padding: 3px 10px; }
+.badge--lg { font-size: 0.8rem; padding: 4px 12px; }
+
+.badge--genre {
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+  color: var(--primary-2);
+}
+
+.badge--status {
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--muted) 25%, transparent);
+  color: var(--muted);
+}
+
+.badge--watching { background: rgba(56,189,248,.15); border-color: rgba(56,189,248,.3); color: var(--secondary); }
+.badge--reading { background: rgba(56,189,248,.15); border-color: rgba(56,189,248,.3); color: var(--secondary); }
+.badge--planning { background: rgba(139,92,246,.15); border-color: rgba(139,92,246,.3); color: var(--primary-2); }
+.badge--completed { background: rgba(52,211,153,.15); border-color: rgba(52,211,153,.3); color: var(--success); }
+.badge--paused { background: rgba(251,191,36,.15); border-color: rgba(251,191,36,.3); color: var(--warning); }
+.badge--dropped { background: rgba(251,113,137,.15); border-color: rgba(251,113,137,.3); color: var(--danger); }
+.badge--finished { background: rgba(52,211,153,.15); border-color: rgba(52,211,153,.3); color: var(--success); }
+.badge--airing { background: rgba(56,189,248,.15); border-color: rgba(56,189,248,.3); color: var(--secondary); }
+.badge--not-aired { background: rgba(139,92,246,.15); border-color: rgba(139,92,246,.3); color: var(--primary-2); }
+.badge--publishing { background: rgba(56,189,248,.15); border-color: rgba(56,189,248,.3); color: var(--secondary); }
+.badge--hiatus { background: rgba(251,191,36,.15); border-color: rgba(251,191,36,.3); color: var(--warning); }

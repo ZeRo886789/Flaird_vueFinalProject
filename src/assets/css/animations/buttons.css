@@ -1,0 +1,2 @@
+@keyframes button-pop { 0% { transform: scale(1); } 45% { transform: scale(.96); } 100% { transform: scale(1); } }
+.is-clicked { animation: button-pop .24s ease; }

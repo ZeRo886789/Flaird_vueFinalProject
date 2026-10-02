@@ -1,0 +1,4 @@
+node_modules
+dist
+*.log
+FLAIRD_BUILD_GUIDE.docx

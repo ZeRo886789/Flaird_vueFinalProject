@@ -1,0 +1,11 @@
+@media (max-width: 1100px) {
+  :root { --sidebar-w: 215px; }
+  .app-main { padding-left: calc(var(--sidebar-w) + 24px); padding-right: 24px; }
+  .media-grid { grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .charts-grid { grid-template-columns: 1fr; }
+  .chart-card.full-width { grid-column: 1 / -1; }
+  .catalog-filters { justify-content: center; }
+  .catalog-filters .select { max-width: 150px; }
+  .users-list { max-width: 320px; }
+}

@@ -1,0 +1,116 @@
+.catalog-page {
+  position: relative;
+  isolation: isolate;
+}
+
+.catalog-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(7, 8, 13, 0.82) 0%,
+      rgba(7, 8, 13, 0.94) 35%,
+      rgba(7, 8, 13, 1) 78%
+    ),
+    var(--catalog-bg);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(10px);
+  transform: scale(1.04);
+
+  opacity: 0.25;
+
+  pointer-events: none;
+  z-index: -2;
+}
+
+.catalog-page.catalog-page--anime::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(139, 92, 246, 0.12),
+      transparent 30rem
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.catalog-page.catalog-page--manga::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(217, 70, 239, 0.12),
+      transparent 30rem
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.catalog-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.catalog-header__count {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.catalog-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+}
+
+.filter-chip.is-active {
+  color: var(--text);
+  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(139, 92, 246, 0.12);
+}
+
+@media (max-width: 900px) {
+  .catalog-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .catalog-filters {
+    flex-direction: column;
+  }
+
+  .catalog-filters .select {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+}

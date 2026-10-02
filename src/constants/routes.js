@@ -1,0 +1,22 @@
+export const ROUTES = {
+  HOME: '/',
+  LOGIN: '/login',
+  REGISTER: '/register',
+  DASHBOARD: '/dashboard',
+  ANIME: '/anime',
+  MANGA: '/manga',
+  ANIME_DETAILS: '/anime/:id',
+  MANGA_DETAILS: '/manga/:id',
+  SEARCH: '/search',
+  LIBRARY: '/library',
+  LIBRARY_PROGRESS: '/library/progress',
+  FAVORITES: '/favorites',
+  CALENDAR: '/calendar',
+  COMMUNITY: '/community',
+  PROFILE: '/profile',
+  USER_PROFILE: '/user/:id',
+  STATISTICS: '/statistics',
+  NOTIFICATIONS: '/notifications',
+  SETTINGS: '/settings',
+  NOT_FOUND: '/:pathMatch(.*)*'
+}
