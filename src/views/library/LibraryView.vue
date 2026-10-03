@@ -21,6 +21,15 @@ const getTitle = (item) => {
   return allTitles.find(t => t.id === item.titleId)
 }
 
+function getProgressPercent(item) {
+  const title = getTitle(item)
+  if (!title) return 0
+  const total = title.type === 'anime' ? Number(title.episodes) : Number(title.chapters)
+  if (!Number.isFinite(total) || total <= 0) return 0
+  const progress = Math.min(Math.max(Number(item.progress) || 0, 0), total)
+  return Math.round((progress / total) * 100)
+}
+
 const filteredLibrary = computed(() => {
   if (statusFilter.value === 'all') return userLibrary.value
   return userLibrary.value.filter(x => x.status === statusFilter.value)
@@ -98,9 +107,9 @@ const statusLabels = {
                 :show-label="true"
                 size="sm"
               />
-              <div class="library-item__percent">{{ getTitle(item) ? Math.round((item.progress / (getTitle(item).type === 'anime' ? getTitle(item).episodes : getTitle(item).chapters)) * 100) : 0 }}%</div>
+              <div class="library-item__percent">{{ getProgressPercent(item) }}%</div>
             </div>
-            <RouterLink :to="'/library/progress'" class="btn btn--ghost btn--sm library-item__edit">Edit</RouterLink>
+            <RouterLink :to="{ path: '/library/progress', query: { titleId: String(item.titleId) } }" class="btn btn--ghost btn--sm library-item__edit">Edit</RouterLink>
           </div>
         </div>
       </div>

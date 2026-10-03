@@ -53,37 +53,88 @@ export const useLibraryStore = defineStore('library', {
 
     updateProgress(titleId, progress, status) {
       const auth = useAuthStore()
-      const title = [...this.library].find(
-        x => x.userId === auth.currentUser?.id && x.titleId === titleId
-      )
-      if (!title) return
 
-      const allTitles = [...anime, ...manga]
-      const media = allTitles.find(t => t.id === title.titleId)
+      if (!auth.currentUser) {
+        return
+      }
 
-      const total = media
-        ? media.type === 'anime'
-          ? media.episodes
-          : media.chapters
-        : Number.MAX_SAFE_INTEGER
-
-      const numericProgress = Math.min(
-        Math.max(Number(progress) || 0, 0),
-        total || Number.MAX_SAFE_INTEGER
+      const libraryItem = this.library.find(
+        item =>
+          item.userId === auth.currentUser.id &&
+          item.titleId === titleId
       )
 
-      title.progress = numericProgress
+      if (!libraryItem) {
+        return
+      }
+
+      const media = [
+        ...anime,
+        ...manga
+      ].find(
+        title => title.id === titleId
+      )
+
+      if (!media) {
+        return
+      }
+
+      const rawTotal =
+        media.type === 'anime'
+          ? Number(media.episodes)
+          : Number(media.chapters)
+
+      const total =
+        Number.isFinite(rawTotal) &&
+        rawTotal > 0
+          ? rawTotal
+          : 0
+
+      let numericProgress =
+        Number(progress)
+
+      if (!Number.isFinite(numericProgress)) {
+        numericProgress = 0
+      }
+
+      numericProgress = Math.max(
+        numericProgress,
+        0
+      )
+
+      if (total > 0) {
+        numericProgress = Math.min(
+          numericProgress,
+          total
+        )
+      }
+
+      libraryItem.progress =
+        Math.round(numericProgress)
 
       if (status) {
-        title.status = status
+        libraryItem.status = status
       }
 
-      if (numericProgress >= total && total > 0) {
-        title.status = 'completed'
+      /*
+       * Automatically complete a title
+       * when progress reaches the total.
+       */
+      if (
+        total > 0 &&
+        libraryItem.progress >= total
+      ) {
+        libraryItem.progress = total
+        libraryItem.status = 'completed'
       }
 
-      title.updatedAt = new Date().toISOString()
-      save('library', this.library)
+      libraryItem.updatedAt =
+        new Date().toISOString()
+
+      save(
+        'library',
+        this.library
+      )
     },
 
     toggleFavorite(titleId) {
